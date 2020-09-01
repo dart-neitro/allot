@@ -42,13 +42,18 @@ def get_max_distance_from_pairs(pairs:  Dict[int, Dict]) -> int:
     return result
 
 
-if __name__ == "__main__":
-    with open("array.txt", "r") as file:
+def get_data_list_from_file(file_path: str) -> List[int]:
+    with open(file_path, "r") as file:
         rand_array = file.read().split("\n")
         rand_array.pop()
         fixed_arr = list(map(int, rand_array))
+    return fixed_arr
+
+
+if __name__ == "__main__":
+    data_list = get_data_list_from_file("array.txt")
     start = time.time()
-    res = solution(fixed_arr)
+    res = solution(data_list)
     print(res)
     end = time.time()
     print(end - start)
