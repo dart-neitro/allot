@@ -37,13 +37,6 @@ class Pair:
         return 0
 
 
-p = Pair(1)
-assert p.get_distance() == 0, p.get_distance()
-p = Pair(1)
-p.last = 10
-assert p.get_distance() == 9, p.get_distance()
-
-
 def solution(source_data: list):
     meeting_pairs = get_pair_from_list(source_data)
     distance = get_max_distance_from_pairs(meeting_pairs)
@@ -78,6 +71,12 @@ def get_data_list_from_file(file_path: str) -> Iterable:
 
 
 if __name__ == "__main__":
+    p = Pair(1)
+    assert p.get_distance() == 0, p.get_distance()
+    p = Pair(1)
+    p.last = 10
+    assert p.get_distance() == 9, p.get_distance()
+
     data_list = get_data_list_from_file("array.txt")
     start = time.time()
     res = solution(data_list)
