@@ -14,8 +14,13 @@ It is possible to run under a second.
 Addition:
 Optimize work with memory:
 1) reading data from file
+* sys.getsizeof(fixed_arr) == 83120 # bytes
 2) storing data
-
+    standard dict:
+        sys.getsizeof({"first": 1, "last": 22}) == 248 # bytes
+    the Pair class:
+        sys.getsizeof(Pair(1)) = 64 # bytes
+     
 """
 
 
