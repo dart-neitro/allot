@@ -12,16 +12,6 @@ It is possible to run under a second.
 """
 
 
-def solution_old(my_list: list):
-    len_list = len(my_list)
-    result = 0
-    for i in range(len_list):
-        for j in range(len_list):
-            if my_list[i] == my_list[j]:
-                result = max(result, abs(i - j))
-    return result
-
-
 def solution(my_list: list):
     len_list = len(my_list)
 
