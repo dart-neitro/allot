@@ -20,7 +20,9 @@ Optimize work with memory:
         sys.getsizeof({"first": 1, "last": 22}) == 248 # bytes
     the Pair class:
         sys.getsizeof(Pair(1)) = 64 # bytes
-     
+
+# TODO:
+- add docstrings 
 """
 
 
