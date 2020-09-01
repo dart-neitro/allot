@@ -14,8 +14,29 @@ It is possible to run under a second.
 Addition:
 Optimize work with memory:
 1) reading data from file
+2) storing data
 
 """
+
+
+class Pair:
+    __slots__ = ("first", "last")
+
+    def __init__(self, first):
+        self.first = first
+        self.last = None
+
+    def get_distance(self):
+        if self.last is not None:
+            return self.last - self.first
+        return 0
+
+
+p = Pair(1)
+assert p.get_distance() == 0, p.get_distance()
+p = Pair(1)
+p.last = 10
+assert p.get_distance() == 9, p.get_distance()
 
 
 def solution(source_data: list):
@@ -29,9 +50,9 @@ def get_pair_from_list(source_data: Iterable) -> Dict[int, Dict]:
     meeting_pairs = dict()
     for i, key in enumerate(source_data):
         if key not in meeting_pairs:
-            meeting_pairs[key] = {'first': i, 'last': None}
+            meeting_pairs[key] = Pair(i)
         else:
-            meeting_pairs[key]['last'] = i
+            meeting_pairs[key].last = i
     return meeting_pairs
 
 
@@ -39,10 +60,8 @@ def get_max_distance_from_pairs(pairs:  Dict[int, Dict]) -> int:
     # second step - get the max difference
     result = 0
     for key in pairs:
-        data = pairs[key]
-        if data['last'] is not None:
-            curr_dist = data['last'] - data['first']
-            result = max(result, curr_dist)
+        pair = pairs[key]
+        result = max(result, pair.get_distance())
     return result
 
 
