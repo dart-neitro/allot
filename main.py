@@ -23,6 +23,8 @@ Optimize work with memory:
 
 # TODO:
 - add docstrings 
+
+Maybe the right condition is "i - j - 1"?
 """
 
 
@@ -35,7 +37,7 @@ class Pair:
 
     def get_distance(self):
         if self.last is not None:
-            return self.last - self.first
+            return self.last - self.first - 1
         return 0
 
 
@@ -75,9 +77,14 @@ def get_data_list_from_file(file_path: str) -> Iterable:
 if __name__ == "__main__":
     p = Pair(1)
     assert p.get_distance() == 0, p.get_distance()
+
+    p = Pair(0)
+    p.last = 2
+    assert p.get_distance() == 1, p.get_distance()
+
     p = Pair(1)
     p.last = 10
-    assert p.get_distance() == 9, p.get_distance()
+    assert p.get_distance() == 8, p.get_distance()
 
     data_list = get_data_list_from_file("array.txt")
     start = time.time()
@@ -85,4 +92,9 @@ if __name__ == "__main__":
     print(res)
     end = time.time()
     print(end - start)
-    assert res == 9987, res
+    assert res == 9986, res
+    res = solution([1, 1])
+    assert res == 0, res
+    res = solution([1, 0, 1])
+    assert res == 1, res
+
